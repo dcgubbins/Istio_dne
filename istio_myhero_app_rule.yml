@@ -4,7 +4,7 @@ metadata:
   name: myhero-app
 spec:
   hosts:
-  - "<YOUR_APP_DNS_NAME>"
+  - "app.10.10.20.208.xip.io"
   gateways:
   - myhero-gateway
   - mesh

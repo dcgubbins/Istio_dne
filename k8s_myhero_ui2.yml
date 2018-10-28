@@ -51,7 +51,7 @@ spec:
           protocol: TCP
         env:
           - name: myhero_app_server
-            value: http://app.10.10.20.213.xip.io
+            value: http://app.10.10.20.208.xip.io
           - name: myhero_app_key
             value: SecureApp
         imagePullPolicy: IfNotPresent
@@ -96,7 +96,7 @@ spec:
           protocol: TCP
         env:
           - name: myhero_app_server
-            value: http://app.10.10.20.213.xip.io
+            value: http://app.10.10.20.208.xip.io
           - name: myhero_app_key
             value: SecureApp
         imagePullPolicy: IfNotPresent
@@ -141,7 +141,7 @@ spec:
           protocol: TCP
         env:
           - name: myhero_app_server
-            value: http://app.10.10.20.213.xip.io
+            value: http://app.10.10.20.208.xip.io
           - name: myhero_app_key
             value: SecureApp
         imagePullPolicy: IfNotPresent

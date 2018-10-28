@@ -8,6 +8,11 @@ spec:
   gateways:
   - myhero-gateway
   http:
-  - route:
+  - fault:
+      delay:
+        percent: 100
+        fixedDelay: 5s
+    route:
     - destination:
         host: myhero-ui.myhero.svc.cluster.local
+        subset: v1

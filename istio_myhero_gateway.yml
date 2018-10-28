@@ -11,5 +11,5 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "<YOUR_UI_DNS_NAME>"
-    - "<YOUR_APP_DNS_NAME>"
+    - "app.10.10.20.208.xip.io"
+    - "ui.10.10.20.208.xip.io"
