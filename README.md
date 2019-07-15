@@ -1,2 +1,2 @@
-# Istio_dne
-myhero app k8s manifests for Istio DNE
+# Istio_DevnetExpress
+DevNet Express
