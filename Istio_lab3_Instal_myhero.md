@@ -18,20 +18,20 @@ Enable Istio and Install the myhero Application
 # Lab 3: Install MyHero
 There are few steps we need to complete in order to Install our Application.
 
-1. Create a myhero namespace and Enable Istio
-2. Git Clone the Application and Istio manifiest files
+1. Create a myhero namespace and enable Istio
+2. Git clone the application and Istio manifiest files
 3. Identify the Istio system ingressgateway IP
 4. Update the manifests with the gateway IP
 5. Deploy the myhero app and test
 
 ## Create MyHero namespace
-We need to create a namespace into which our application will be deployed. We will use the name "myhero" for our namespace.
+We need to create a namespace into which our application will be deployed. We will use the name 'myhero' for our namespace.
 
 We also need to enable Istio in the namespace which will ensure all PODs deployed get an associated Istio sidecar.
 
-We will use the K8s Cli (kubectl) to complete the next steps.
+We will use the Kubernetes Cli (Kubectl) to complete the next steps.
 
-Create a new name on our k8s cluster
+Create a new name on our Kubernetes cluster
 ```
 kubectl create namespace myhero
 ```
@@ -45,7 +45,7 @@ kubectl get namespace -L istio-injection
 ```
 ## Find the Istio ingressgateway IP Address
 
-Istio automatically installs a number of components at installation. One of these components is an ingressgateway which has an external IP address assigned to it. We will use this gateway IP for our application external communications. To find the ingressgateway IP address issue the following Command:
+Istio automatically installs a number of components at installation. One of these components is an ingressgateway which has an external IP address assigned to it. We will use this gateway IP for our application external communications. To find the ingressgateway IP address issue the following command:
 
 ```
 kubectl -n istio-system get svc istio-ingressgateway
@@ -61,7 +61,7 @@ All application and service deployments are made using manifest files. These fil
 
 The Manifests can be found here xxxxxxxxxxxxx on github
 
-Create a Directory on you laptop
+Create a directory on you laptop
 ```
 mkdir Istio
 ```
@@ -76,9 +76,7 @@ git clone xxxxxxxxxxxxxx
 You will now have all the manifest files you need.
 Some of the the manifests are currently templates as we need to make a change to a few of them adding an IP address.
 
-
-
-We now need to update our Istio and Kubernetes manifests with this IP address and once editied we need to save them as .yml files.
+We now need to update our Istio and Kubernetes manifests with this IP address and once edited we need to save them as .yml files.
 
 The files that need editing are located in the Istio_Policies_Templates and myhero_Templates folders:
 
@@ -87,20 +85,21 @@ The files that need editing are located in the Istio_Policies_Templates and myhe
 `Istio_myhero_UI_rule.template`<br>
 `K8s_myhero_ui.templates`<br>
 
-to edit the files use your favourite text editor.
-The example below uses ATOM
+To edit the files use your favourite text editor.
+The example below uses [ATOM](https://atom.io/)
 ![alt text][Istio-manifest-edit-example]
 
 [Istio-manifest-edit-example]:Istio_DNE_Images/Istio-manifest-edit-example.png
 
 Replace <Istio-ingressgateway-IP> with the IP address you recorded in the previous step.
 
-`e.g "app.<istio-ingressgateway-IP>xip.io" becomes "app.10.10.20.208.xip.io`
+e.g `app.<istio-ingressgateway-IP>xip.io` becomes `app.10.10.20.208.xip.io`
 
 (Note that we are using an external DNS service xip.io to mitigate some Sandbox nuances)
 
-*Don't forget to save your updated manifest files with the .yml extension.*
+***Don't forget to save your updated manifest files with the .yml extension.***
 
+## Deploy the app
 So now we have all out manifest updated we can deploy the app.
 You can deploy either via the K8s dashboard or kubectl Cli.
 

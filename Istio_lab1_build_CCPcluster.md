@@ -23,12 +23,13 @@ Before you attempt this lab it will make much more sense if you have already com
 3.	Completed setup and have Kubernetes CLI (kubectl) installed in your local laptop
 
 
-# Excercise 1: Build a New k8s Cluster on CCP
-We need a K8s cluster upon which to run our application. So we will use Cisco Container Platform(CCP) to launch a new cluster for our app.
+# Excercise 1: Build a New Kubernetes Cluster on CCP
+We need a Kubernetes cluster upon which to run our application. So we will use Cisco Container Platform(CCP) to launch a new cluster for our app.
 
-##Logon to CCP
-Log onto you CCP Sandbox Dashboard https://198.18.1.110 with credentials `admin/Cisco123`
+## Login to CCP
+Login to you CCP Sandbox Dashboard https://198.18.1.110 with credentials `admin/Cisco123`
 
+## Create a cluster
 Once you are in your CCP admin select you will see the default cluster “sandbox_demo_Cluster-1”. Like in the previous CCP lab we are going to build a new cluster for our application so Click on “New Cluster”
 
 ![alt text][newcluster]
@@ -41,7 +42,8 @@ Once you are in your CCP admin select you will see the default cluster “sandbo
 
 [CCP_Basic_Info_1]:Istio_DNE_Images/CCP_Basic_Info_1.png "Complete Form"
 
-Fill out the basic information:
+
+### Fill out the basic information:
 Infrastructure Provider: `vsphere`<br>
 Kubernetes Cluster Name: `myhero`<br>
 Kubernetes version: `1.12.3`<br>
@@ -68,32 +70,34 @@ VM Template: `ccp-tennant-image-1.12.3-ubuntu18-3.1.0`<br>
 Leave the Worker and Master node configurations as default.
 
 VM Username: `ccpuser`<br>
-For SSH Public Key, you can use your own ECDSA SSH pubic key or paste in the key below:
+For SSH Public Key, you can use your own ECDSA SSH public key or paste in the key below:
 
-ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHlSb9ZkXQL5/GI12258c+AIKVhDN1p1VYjvJR5oliqoR/gN/65D04BfsZWE8nk00AtJzvEVbjenwLeWuvIQsFs5AHa5uM4Fpmw3Ylpt1tB/GZHZ5Mg9sh1iLh5agSgNLWkAgCRvySmLO3fSq0IKarnQrMqId2pGUlNZr/YPP4irTvU6w== sandbox@CCP_SANDBOX_NISTP521_KEY<br>
-
-Subnet: Subnet:`10.10.20.0/24`<br>
+```
+ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHlSb9ZkXQL5/GI12258c+AIKVhDN1p1VYjvJR5oliqoR/gN/65D04BfsZWE8nk00AtJzvEVbjenwLeWuvIQsFs5AHa5uM4Fpmw3Ylpt1tB/GZHZ5Mg9sh1iLh5agSgNLWkAgCRvySmLO3fSq0IKarnQrMqId2pGUlNZr/YPP4irTvU6w== sandbox@CCP_SANDBOX_NISTP521_KEY
+```
 Number of Load Balancer IPs: `10`<br>
+Subnet:`10.10.20.0/24`<br>
 Pod Network CIDR: `192.168.0.0/16`<br>
+Root CA Certificate: `<leave this blank>`<br>
 Enable Istio: `YES` <This is Important!><br>
 
-Click Next and Next again to get to the summary page and "Finish". You Cluster will build.
+Click Next and Next again to get to the summary page and "Finish". Your Cluster will build.
 
 ![alt text][CCP_Cluster_Build]
 
 [CCP_Cluster_Build]: Istio_DNE_Images/CCP_Cluster_build.png "building"
 
-Once the Cluster is Ready select `Download Kubeconfig`to access the k8s Dashboard.
+Once the Cluster is Ready select `Download Kubeconfig`to access the Kubernetes dashboard.
 ![alt text][k8s_download_token]
 
 [k8s_download_token]: Istio_DNE_Images/k8s_download_token2.png "Token"
 
-Open the Dashboard and Select the Token you just downloaded.
+Open the dashboard and select the kubeconfig.yaml file you just downloaded.
 ![alt text][k8s_token2]
 
 [k8s_token2]: Istio_DNE_Images/k8s_token2.png "Token Input"
 
-You are in and Your Clusters is up and running.
+You are in and your cluster is up and running.
 ![alt text][k8s_initial_homepage]
 
 [k8s_initial_homepage]: Istio_DNE_Images/k8s_initial_homepage.png "k8s Homepage"
